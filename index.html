@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Sayang 💖</title>
+
+<!-- ============ FONT ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   RESET & VARIABEL WARNA
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --pink-soft:   #ffd9e0;
+  --pink-main:   #ff9bb3;
+  --rose-gold:   #e8b4b8;
+  --cream:       #fff8f2;
+  --gold:        #d4a373;
+  --gold-soft:   #f4d3b0;
+  --text-dark:   #5a3a3a;
+  --text-soft:   #8a6666;
+  --shadow-soft: 0 10px 30px rgba(214, 150, 165, 0.25);
+}
+
+html, body{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, #fff5f8 0%, #ffe4ec 40%, #fff0f5 70%, #ffeef5 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   KANVAS PARTIKEL HATI / KELOPAK BUNGA
+   ============================================================ */
+#petals-canvas{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   FLOATING MUSIC PLAYER
+   ============================================================ */
+.music-player{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 10px 16px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease;
+}
+.music-player:hover{ transform: scale(1.03); }
+
+.music-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--pink-main), var(--rose-gold));
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 155, 179, 0.45);
+  transition: all 0.25s ease;
+}
+.music-btn:hover{
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 6px 18px rgba(255, 155, 179, 0.6);
+}
+.music-btn:active{ transform: scale(0.95); }
+
+.music-info{
+  font-size: 11px;
+  color: var(--text-soft);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.music-info strong{
+  display: block;
+  font-size: 12px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  z-index: 2;
+}
+
+.hero-badge{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s forwards;
+}
+
+.hero-title{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.2rem, 11vw, 7rem);
+  background: linear-gradient(135deg, #ff8fab 0%, #e8b4b8 50%, #d4a373 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  padding: 10px;
+  filter: drop-shadow(0 4px 20px rgba(255, 155, 179, 0.35));
+  opacity: 0;
+  animation: fadeUp 1.2s ease 0.4s forwards;
+}
+
+.hero-sub{
+  font-size: clamp(0.95rem, 2.4vw, 1.15rem);
+  color: var(--text-soft);
+  max-width: 520px;
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s forwards;
+}
+
+.hero-btn{
+  margin-top: 34px;
+  padding: 14px 36px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--pink-main), var(--rose-gold));
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(255, 155, 179, 0.45);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 1s ease 1s forwards;
+}
+.hero-btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(255, 155, 179, 0.6);
+}
+
+@keyframes fadeUp{
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-hint{
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  color: var(--rose-gold);
+  animation: bounceDown 2s infinite;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.4s forwards, bounceDown 2s ease-in-out 2.4s infinite;
+}
+@keyframes bounceDown{
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ============================================================
+   SECTION UMUM
+   ============================================================ */
+section{
+  position: relative;
+  z-index: 2;
+  padding: 80px 20px;
+}
+
+.section-title{
+  text-align: center;
+  margin-bottom: 50px;
+}
+.section-title h2{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+.section-title .ornament{
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 6px;
+}
+.section-title p{
+  color: var(--text-soft);
+  font-weight: 300;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   GALERI FOTO
+   ============================================================ */
+.gallery-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  padding: 0 10px;
+}
+
+.photo-card{
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: var(--pink-soft);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  border: 4px solid white;
+}
+.photo-card:nth-child(2n){ transform: rotate(-1.5deg); }
+.photo-card:nth-child(3n){ transform: rotate(1.5deg); }
+
+.photo-card:hover{
+  transform: translateY(-8px) scale(1.03) rotate(0deg);
+  box-shadow: 0 18px 45px rgba(214, 150, 165, 0.5);
+  z-index: 5;
+}
+.photo-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  display: block;
+}
+.photo-card:hover img{
+  transform: scale(1.1);
+}
+.photo-card .overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(255, 155, 179, 0.7), transparent 55%);
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  transition: opacity 0.4s ease;
+}
+.photo-card:hover .overlay{ opacity: 1; }
+
+/* ============================================================
+   MINI GAME
+   ============================================================ */
+.game-section{
+  text-align: center;
+}
+
+.game-stats{
+  display: inline-flex;
+  gap: 24px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  padding: 14px 28px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.game-stats .stat{
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+.game-stats .stat strong{
+  color: var(--pink-main);
+  font-size: 1.2rem;
+  display: block;
+  font-family: 'Playfair Display', serif;
+}
+
+.game-area{
+  max-width: 620px;
+  margin: 0 auto;
+  height: 460px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(255, 228, 236, 0.8));
+  border-radius: 28px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  border: 2px dashed rgba(232, 180, 184, 0.6);
+}
+
+.game-start-screen{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(255, 228, 236, 0.95));
+  z-index: 10;
+  transition: opacity 0.4s ease;
+}
+.game-start-screen.hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+.game-start-screen h3{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.7rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+.game-start-screen p{
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  max-width: 380px;
+}
+.start-btn{
+  padding: 14px 38px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--pink-main), var(--rose-gold));
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(255, 155, 179, 0.5);
+  transition: all 0.3s ease;
+}
+.start-btn:hover{ transform: translateY(-2px) scale(1.04); }
+
+/* Floating hearts yang bisa ditangkap */
+.falling-heart{
+  position: absolute;
+  font-size: 2.2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease;
+  filter: drop-shadow(0 3px 6px rgba(255, 155, 179, 0.5));
+  will-change: transform, top;
+  animation: floatWobble 1.5s ease-in-out infinite;
+}
+.falling-heart:hover{ transform: scale(1.25); }
+.falling-heart.pop{
+  animation: popOut 0.35s ease forwards;
+  pointer-events: none;
+}
+@keyframes floatWobble{
+  0%,100% { margin-left: 0px; }
+  50%     { margin-left: 12px; }
+}
+@keyframes popOut{
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Skor popup */
+.score-popup{
+  position: absolute;
+  color: var(--pink-main);
+  font-weight: 600;
+  font-size: 1.2rem;
+  pointer-events: none;
+  animation: scoreUp 0.9s ease forwards;
+  font-family: 'Playfair Display', serif;
+}
+@keyframes scoreUp{
+  0%   { opacity: 1; transform: translateY(0) scale(0.8); }
+  100% { opacity: 0; transform: translateY(-60px) scale(1.3); }
+}
+
+/* ============================================================
+   MODAL SURAT CINTA
+   ============================================================ */
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(90, 58, 58, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.modal-overlay.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card{
+  background: linear-gradient(160deg, #fffaf6, #ffeef5);
+  border-radius: 28px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(214, 150, 165, 0.5);
+  border: 2px solid rgba(255,255,255,0.9);
+  transform: scale(0.8) translateY(20px);
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  position: relative;
+}
+.modal-overlay.show .modal-card{
+  transform: scale(1) translateY(0);
+}
+
+.modal-heart{
+  font-size: 3rem;
+  margin-bottom: 14px;
+  display: inline-block;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.15); }
+}
+
+.modal-card h3{
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  background: linear-gradient(135deg, #ff8fab, #d4a373);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.modal-card .letter{
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--text-dark);
+  font-style: italic;
+  text-align: left;
+  padding: 0 8px;
+  margin-bottom: 24px;
+}
+.modal-card .letter p{ margin-bottom: 14px; }
+.modal-card .signature{
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.6rem;
+  color: var(--rose-gold);
+  text-align: right;
+  margin-top: 10px;
+}
+
+.close-btn{
+  padding: 12px 34px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--pink-main), var(--rose-gold));
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 155, 179, 0.5);
+  transition: all 0.3s ease;
+}
+.close-btn:hover{ transform: translateY(-2px) scale(1.03); }
+
+/* ============================================================
+   CONFETTI CANVAS
+   ============================================================ */
+#confetti-canvas{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  text-align: center;
+  padding: 40px 20px 60px;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 300;
+  position: relative;
+  z-index: 2;
+}
+footer .heart{ color: var(--pink-main); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px){
+  section{ padding: 60px 16px; }
+  .gallery-wrap{ gap: 12px; }
+  .photo-card{ border-radius: 18px; border-width: 3px; }
+  .game-area{ height: 420px; border-radius: 22px; }
+  .falling-heart{ font-size: 1.9rem; }
+  .music-player{ padding: 8px 12px; gap: 8px; bottom: 14px; right: 14px; }
+  .music-btn{ width: 38px; height: 38px; font-size: 14px; }
+  .music-info{ max-width: 70px; }
+  .modal-card{ padding: 30px 22px; border-radius: 22px; }
+  .modal-card h3{ font-size: 2rem; }
+  .modal-card .letter{ font-size: 0.95rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     CANVAS PARTIKEL (kelopak bunga / hati jatuh)
+     ============================================================ -->
+<canvas id="petals-canvas"></canvas>
+
+<!-- ============================================================
+     AUDIO PLAYER — GANTI FILE MP3 DI SINI
+     ============================================================ -->
+<!--
+  ⚠️  EDIT DI SINI: Ganti src dengan link/file MP3 lagu favorit kalian.
+      Contoh: src="lagu-romantis.mp3"  (letakkan file di folder yang sama)
+      Atau  : src="https://vt.tiktok.com/ZS9Dx8quQWQDF-6V5kr/" type="audio/mpeg"
+      <audio id="audio" src="lagu.mp3"></audio>
+
+<button onclick="document.getElementById('audio').play()">
+  ▶ Play Lagu
+</button>
+-->
+<audio id="bg-music" loop preload="auto">
+  <source src="https://vt.tiktok.com/ZS9Dx8quQWQDF-6V5kr/" type="audio/mpeg" />
+  <!-- ↑ GANTI URL DI ATAS dengan lagu pilihan Anda -->
+  Browser Anda tidak mendukung elemen audio.
+</audio>
+
+<div class="music-player" id="musicPlayer">
+  <button class="music-btn" id="playPauseBtn" title="Play / Pause">▶</button>
+  <button class="music-btn" id="muteBtn" title="Mute / Unmute">🔊</button>
+  <div class="music-info">
+    <strong id="songTitle">Soft</strong>
+    ♫ Lany
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO SECTION — EDIT TEKS UCAPAN DI SINI
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-badge">— Happy Birthday —</div>
+  <!-- EDIT DI SINI: Ganti nama pacar Anda -->
+  <h1 class="hero-title">Kamelia Fitri</h1>
+  <!-- EDIT DI SINI: Ganti kalimat pembuka -->
+  <p class="hero-sub">
+    Selamat ulang tahun yang ke 18 cintaku. Aku minta maaf yaa karena aku telat ngucapin kamu ulang tahun, aku tau kamu pasti kecewa sama aku, apalagi ini hari spesial kamu, tapi aku malah telat ngucapin kamu ulang tahun, aku bener-bener minta maaf yaa sayang. Aku mau jelasin kenapa aku bisa sampe salah tanggal. Jadi, selama ini aku nyatet tanggal lahir kamu di catatan hp aku kaya gini "09-10-2008". Nah aku malah salah nangkep angka 10 itu sebagai tanggal lahir kamu, padahal itu bulan lahir kamu, sedangkan tanggal lahir kamu itu tanggal 9. Aku bener-bener salah baca catatan aku sendiri karena aku nulis bulan tanggal dan tahun lahir kamu di catatan hp aku pake angka, bukan huruf. Tapi aku sadar, tetep aja aku yang salah karena kurang teliti dan ga mastiin lagi tanggalnya. aku bukan mau cari alasan atau ngebela diri aku, aku cuma mau jujur sama kamu tentang kenapa aku bisa sampe salah tanggal. Aku ngerti kalo kamu marah, kecewa, bahkan jadi males sama aku gara-gara kejadian ini. Aku juga ngerti kalo buat kamu ulang tahun itu hari yang spesial dan kamu pasti berharap aku inget hari itu. Maafin aku yaa sayangg, aku bener-bener minta maaf karena udah bikin kamu kecewa. Aku sama sekali ga ada niatan buat bikin kamu ngerasa kalo hari spesial kamu itu ga penting buat aku. Aku tau sekarang aku cuma bisa minta maaf, dan mungkin kamu juga ga bisa langsung maafin aku atau langsung biasa lagi sama aku. Gapapa ko aku ngerti kalo kamu masih kecewa sama aku. Aku ga bakal maksa kamu buat langsung maafin aku. Aku cuma berharap kamu tau kalo aku bener-bener ngerasa bersalah karena udah bikin kamu ngerasa kecewa di hari spesial kamu sendiri. Maafin aku yaa sayang, aku sayangg banget sama kamu, dan aku ga mau gara-gara kesalahan aku ini kamu jadi ngerasa kalo aku ga nganggep kamu penting di hidup aku. Sekali lagi, happy birthday yaa sayangku 🎂❤️
+  </p>
+  <button class="hero-btn" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+    Mulai Kejutan ✨
+  </button>
+  <div class="scroll-hint">⌄</div>
+</section>
+
+<!-- ============================================================
+     GALERI FOTO — GANTI URL FOTO DI SINI
+     ============================================================ -->
+<section id="gallery">
+  <div class="section-title">
+    <div class="ornament">❦ ❦ ❦</div>
+    <h2>Kenangan Kita</h2>
+    <p>Setiap momen bersamamu adalah hadiah terindah bagiku</p>
+  </div>
+
+  <div class="gallery-wrap">
+    <!--
+      ⚠️  EDIT DI SINI: Ganti src setiap <img> dengan foto kalian.
+          Bisa pakai URL online, atau file lokal: src="foto1.jpg"
+          Ganti juga teks di <div class="overlay"> dengan caption.
+    -->
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/jvMNGrDK/Whats-App-Image-2026-10-10-at-00-55-24.jpg" alt="Foto 1">
+      <div class="overlay">First Date 🎀🤍</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/Q7gFV5Nd/Whats-App-Image-2026-10-06-at-22-41-12-1.jpg" alt="Foto 2">
+      <div class="overlay">Batik Day 😍🌺</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/F4Zd3bCk/0597fd81-fa8c-4010-a82a-c007342cbb51.jpg" alt="Foto 3">
+      <div class="overlay">Date After School 🎒❤️</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/7Jn8nk0T/e366416f-8ad7-47af-9a78-2304f9af3e6e.jpg" alt="Foto 4">
+      <div class="overlay">Date After Graduation 🎓🤍</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/V0BmcqPr/Whats-App-Image-2026-10-06-at-22-41-28.jpg" alt="Foto 5">
+      <div class="overlay">Photoboots After Dinner 🍽️🤍</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/hxvgHWF2/Whats-App-Image-2026-10-10-at-00-21-09.jpg" alt="Foto 6">
+      <div class="overlay">Photobooth Couple 💑🤍</div>
+    </div>
+    <!-- Tambah / kurangi sesuai kebutuhan (6-10 foto) -->
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/Y7SQLDK9/Whats-App-Image-2026-10-06-at-22-00-59.jpg" alt="Foto 7">
+      <div class="overlay">Cute Couple 🧸💞</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://i.ibb.co.com/NdxRsHPC/006ab273-7d30-4d9d-b017-90757fd0b7c1.jpg" alt="Foto 8">
+      <div class="overlay">Galaxy Date 💗✨</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MINI GAME — TANGKAP HATI
+     ============================================================ -->
+<section class="game-section" id="game">
+  <div class="section-title">
+    <div class="ornament">♡ ♡ ♡</div>
+    <h2>Tangkap Hatiku</h2>
+    <p>Tangkap 15 hati untuk membuka pesan rahasia 💌</p>
+  </div>
+
+  <div class="game-stats">
+    <div class="stat">Skor<strong id="scoreDisplay">0</strong></div>
+    <div class="stat">Target<strong>15</strong></div>
+    <div class="stat">Waktu<strong id="timeDisplay">30s</strong></div>
+  </div>
+
+  <div class="game-area" id="gameArea">
+    <div class="game-start-screen" id="startScreen">
+      <h3>Siap, Sayang?</h3>
+      <p>
+        Hati akan jatuh dari atas. Ketuk/klik hati sebanyak mungkin
+        sebelum waktu habis. Kumpulkan 15 hati untuk membuka surat rahasia
+      </p>
+      <button class="start-btn" id="startGameBtn">Mulai Bermain 💗</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MODAL SURAT CINTA — EDIT ISI SURAT DI SINI
+     ============================================================ -->
+<div class="modal-overlay" id="letterModal">
+  <div class="modal-card">
+    <div class="modal-heart">💌</div>
+    <h3>Happy Birthday, Sayang</h3>
+
+    <!-- EDIT DI SINI: Ganti isi surat dengan kata-kata Anda sendiri -->
+    <div class="letter">
+      <p>Untuk kamu yang selalu jadi alasan aku tersenyum,</p>
+      <p>
+        Terima kasih sudah hadir di hidup aku dan mau bertahan sama aku sampe sejauh ini.
+        Terima kasih untuk setiap tawa, pelukan, cinta, kasih sayang, dan cerita yang
+        kita bagi bersama. Kamu adalah rumah yang selalu ingin
+        aku pulang.
+      </p>
+      <p>
+        Di hari ulang tahunmu ini, aku berdoa semoga kamu selalu
+        bahagia, sehat, dan semua impian kamu satu per satu menjadi nyata.
+        Aku akan selalu ada di samping kamu — hari ini, esok, dan
+        seterusnya.
+      </p>
+      <p>I love you more sayangg ❤️</p>
+      <div class="signature">— Rafa'at Shastradynata</div>
+    </div>
+
+    <button class="close-btn" id="closeModalBtn">Tutup & Pelukan Hangat Untuk Kamu 🤗</button>
+  </div>
+</div>
+
+<!-- Confetti canvas -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  Dibuat dengan sepenuh hati dan effort untuk kamu yang paling istimewa.
+</footer>
+
+<script>
+/* ============================================================
+   1. PARTIKEL KELOPAK BUNGA / HATI JATUH
+   ============================================================ */
+(function(){
+  const canvas = document.getElementById('petals-canvas');
+  const ctx = canvas.getContext('2d');
+  let petals = [];
+  const symbols = ['🌸', '💖', '🌷', '💗', '🌺', '🤍', '💕'];
+  // ⚙️ Bisa edit jumlah partikel di sini
+  const COUNT = window.innerWidth < 600 ? 14 : 22;
+
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function createPetal(){
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height,
+      size: 12 + Math.random() * 16,
+      speedY: 0.5 + Math.random() * 1.2,
+      speedX: (Math.random() - 0.5) * 0.6,
+      rotate: Math.random() * Math.PI * 2,
+      rotateSpeed: (Math.random() - 0.5) * 0.02,
+      opacity: 0.5 + Math.random() * 0.5,
+      symbol: symbols[Math.floor(Math.random() * symbols.length)]
+    };
+  }
+
+  for (let i = 0; i < COUNT; i++) petals.push(createPetal());
+
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    petals.forEach(p => {
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotate);
+      ctx.font = p.size + 'px serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(p.symbol, 0, 0);
+      ctx.restore();
+
+      p.y += p.speedY;
+      p.x += p.speedX + Math.sin(p.y * 0.01) * 0.3;
+      p.rotate += p.rotateSpeed;
+
+      if (p.y > canvas.height + 40){
+        Object.assign(p, createPetal(), { y: -30, x: Math.random() * canvas.width });
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ============================================================
+   2. MUSIC PLAYER
+   ============================================================ */
+(function(){
+  const audio      = document.getElementById('bg-music');
+  const playBtn    = document.getElementById('playPauseBtn');
+  const muteBtn    = document.getElementById('muteBtn');
+  const songTitle  = document.getElementById('songTitle');
+  let isPlaying    = false;
+
+  // ⚙️ EDIT DI SINI: judul lagu yang tampil di player
+  const SONG_NAME  = "Soft ❤️";
+  songTitle.textContent = SONG_NAME;
+
+  playBtn.addEventListener('click', () => {
+    if (isPlaying){
+      audio.pause();
+      playBtn.textContent = '▶';
+    } else {
+      audio.play().catch(()=>{ /* autoplay ditolak browser */ });
+      playBtn.textContent = '⏸';
+    }
+    isPlaying = !isPlaying;
+  });
+
+  muteBtn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+  });
+
+  // Coba autoplay saat interaksi pertama pengguna
+  const tryAutoplay = () => {
+    audio.play().then(() => {
+      isPlaying = true;
+      playBtn.textContent = '⏸';
+    }).catch(()=>{});
+    window.removeEventListener('click', tryAutoplay);
+    window.removeEventListener('touchstart', tryAutoplay);
+  };
+  window.addEventListener('click', tryAutoplay, { once: true });
+  window.addEventListener('touchstart', tryAutoplay, { once: true });
+})();
+
+/* ============================================================
+   3. MINI GAME — TANGKAP HATI
+   ============================================================ */
+(function(){
+  const area        = document.getElementById('gameArea');
+  const startScreen = document.getElementById('startScreen');
+  const startBtn    = document.getElementById('startGameBtn');
+  const scoreEl     = document.getElementById('scoreDisplay');
+  const timeEl      = document.getElementById('timeDisplay');
+  const modal       = document.getElementById('letterModal');
+  const closeBtn    = document.getElementById('closeModalBtn');
+
+  // ⚙️ EDIT DI SINI: atur tingkat kesulitan game
+  const TARGET_SCORE  = 15;   // jumlah hati yang harus ditangkap
+  const GAME_DURATION = 30;   // durasi dalam detik
+  const SPAWN_INTERVAL= 700;  // jeda munculnya hati (ms) — makin kecil makin sulit
+
+  let score       = 0;
+  let timeLeft    = GAME_DURATION;
+  let running     = false;
+  let spawnTimer  = null;
+  let countdown   = null;
+  const hearts    = ['💖','💗','💕','❤️','💝','🌸'];
+
+  function spawnHeart(){
+    if (!running) return;
+    const h = document.createElement('div');
+    h.className = 'falling-heart';
+    h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+
+    const areaW = area.clientWidth;
+    const size  = 40;
+    const x     = Math.random() * (areaW - size);
+    h.style.left = x + 'px';
+    h.style.top  = '-50px';
+
+    // Kecepatan jatuh acak
+    const duration = 2200 + Math.random() * 1800;
+    h.style.transition = `top ${duration}ms linear`;
+
+    area.appendChild(h);
+
+    // Mulai jatuh setelah frame berikutnya (biar transisi jalan)
+    requestAnimationFrame(() => {
+      h.style.top = (area.clientHeight + 20) + 'px';
+    });
+
+    // Klik tangkap hati
+    h.addEventListener('click', (e) => {
+      if (!running || h.dataset.caught) return;
+      h.dataset.caught = '1';
+      score++;
+      scoreEl.textContent = score;
+
+      // Efek pop + skor naik
+      h.classList.add('pop');
+      showScorePopup(e.clientX, e.clientY, '+1');
+
+      setTimeout(() => h.remove(), 350);
+
+      // Menang
+      if (score >= TARGET_SCORE) endGame(true);
+    });
+
+    // Hapus hati kalau sudah lewat bawah
+    setTimeout(() => { if (h.parentNode) h.remove(); }, duration + 200);
+  }
+
+  function showScorePopup(clientX, clientY, text){
+    const rect = area.getBoundingClientRect();
+    const popup = document.createElement('div');
+    popup.className = 'score-popup';
+    popup.textContent = text;
+    popup.style.left = (clientX - rect.left - 10) + 'px';
+    popup.style.top  = (clientY - rect.top  - 10) + 'px';
+    area.appendChild(popup);
+    setTimeout(() => popup.remove(), 900);
+  }
+
+  function startGame(){
+    score = 0;
+    timeLeft = GAME_DURATION;
+    running = true;
+    scoreEl.textContent = '0';
+    timeEl.textContent = timeLeft + 's';
+    startScreen.classList.add('hidden');
+
+    // Hapus sisa hati
+    area.querySelectorAll('.falling-heart').forEach(el => el.remove());
+
+    spawnTimer = setInterval(spawnHeart, SPAWN_INTERVAL);
+    countdown = setInterval(() => {
+      timeLeft--;
+      timeEl.textContent = timeLeft + 's';
+      if (timeLeft <= 0) endGame(false);
+    }, 1000);
+  }
+
+  function endGame(win){
+    running = false;
+    clearInterval(spawnTimer);
+    clearInterval(countdown);
+    area.querySelectorAll('.falling-heart').forEach(el => el.remove());
+
+    if (win){
+      // Confetti + modal surat cinta
+      launchConfetti();
+      setTimeout(() => { modal.classList.add('show'); }, 400);
+      startScreen.classList.remove('hidden');
+      startScreen.querySelector('h3').textContent = 'Yeay! Kamu Menang! 🎉';
+      startScreen.querySelector('p').textContent  = 'Kamu berhasil menangkap ' + TARGET_SCORE + ' hati. Surat rahasia sudah terbuka 💌';
+      startBtn.textContent = 'Main Lagi 💖';
+    } else {
+      startScreen.classList.remove('hidden');
+      startScreen.querySelector('h3').textContent = 'Waktu Habis ⏰';
+      startScreen.querySelector('p').textContent  = 'Skor kamu ' + score + ' dari target ' + TARGET_SCORE + '. Coba lagi ya sayang!';
+      startBtn.textContent = 'Coba Lagi 💕';
+    }
+  }
+
+  startBtn.addEventListener('click', startGame);
+  closeBtn.addEventListener('click', () => modal.classList.remove('show'));
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('show');
+  });
+})();
+
+/* ============================================================
+   4. CONFETTI SEDERHANA
+   ============================================================ */
+function launchConfetti(){
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const colors = ['#ff9bb3', '#e8b4b8', '#d4a373', '#ffd9e0', '#f4d3b0', '#ffffff'];
+  const pieces = [];
+  const COUNT = 140;
+
+  for (let i = 0; i < COUNT; i++){
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: -20 - Math.random() * canvas.height * 0.5,
+      w: 6 + Math.random() * 8,
+      h: 8 + Math.random() * 12,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vy: 2 + Math.random() * 4,
+      vx: (Math.random() - 0.5) * 3,
+      rot: Math.random() * Math.PI,
+      vr: (Math.random() - 0.5) * 0.2,
+      shape: Math.random() > 0.6 ? 'heart' : 'rect'
+    });
+  }
+
+  let frames = 0;
+  function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+
+      if (p.shape === 'heart'){
+        // gambar hati kecil
+        ctx.beginPath();
+        const s = p.w / 2;
+        ctx.moveTo(0, s * 0.3);
+        ctx.bezierCurveTo(0, 0, -s, 0, -s, s * 0.6);
+        ctx.bezierCurveTo(-s, s * 1.2, 0, s * 1.6, 0, s * 2);
+        ctx.bezierCurveTo(0, s * 1.6, s, s * 1.2, s, s * 0.6);
+        ctx.bezierCurveTo(s, 0, 0, 0, 0, s * 0.3);
+        ctx.fill();
+      } else {
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      }
+      ctx.restore();
+    });
+
+    frames++;
+    if (frames < 320){
+      requestAnimationFrame(animate);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+  animate();
+}
+
+/* ============================================================
+   5. SMOOTH SCROLL UNTUK TOMBOL (opsional, sudah inline)
+   ============================================================ */
+</script>
+</body>
+</html>
